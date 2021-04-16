@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BoardList.aspx.cs" Inherits="DotNetNote.Board.BoardList" %>
 
 <%@ Register Src="~/Controls/PagingControl.ascx" TagPrefix="uc1" TagName="PagingControl" %>
+<%@ Register Src="~/Controls/SearchControl.ascx" TagPrefix="uc1" TagName="SearchControl" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3 class="text-center">게시판</h3>
@@ -10,7 +12,8 @@
     <div class="container">
         <div class="row">
             <div class="col=md-12">
-                <asp:Literal ID="LblTotalRecord" runat="server"></asp:Literal>
+                <asp:Literal ID="LblTotalRecord" runat="server"></asp:Literal><br />
+                <uc1:SearchControl runat="server" ID="SearchControl" />
                 <asp:GridView ID="GrvNotes" runat="server" AutoGenerateColumns="false"
                     DataKeyNames="Id" CssClass="table table-bordered table-hover table-striped table-responsive">
                     <Columns>
@@ -25,9 +28,11 @@
                             HeaderStyle-Width="350px"
                             ItemStyle-HorizontalAlign="Left">
                             <ItemTemplate>
+                                <%# Helpers.BoardLibrary.FuncStep(Eval("Step")) %>
                                 <asp:HyperLink ID="LnkTitle" runat="server"
                                     NavigateUrl='<%# "BoardView.aspx?Id="+ Eval("Id") %>'>
                                     <%# Eval("Title") %>
+                                    
                                 </asp:HyperLink>
                                 <%# Helpers.BoardLibrary.FuncNew(Eval("PostDate"))%>
                             </ItemTemplate>
@@ -36,7 +41,11 @@
                             HeaderStyle-Width="70px"
                             ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <%# Eval("FileName") %>
+                                <%--<%# Eval("FileName") %>--%>
+                                <%# Helpers.BoardLibrary.FuncFileDownSingle(
+                                        Convert.ToInt32(Eval("Id")),
+                                        Eval("FileName").ToString(),
+                                        Eval("FileSize").ToString()) %>
                                 <%--<%# Helpers.BoardLibrary.FuncFileDownSingle(
                                     Convert.ToInt32(Eval("Id")), 
                                     Eval("FileName").ToString(), 
@@ -77,7 +86,7 @@
         <div class="row">
             <div class="col">
                 <div class="text-right">
-                    <a href="BoardWrite.aspx" class="btn btn-primary">글쓰기</a>
+                    <a href="BoardWrite.aspx?Mode=Write" class="btn btn-primary">글쓰기</a>
                 </div>
             </div>
         </div>
