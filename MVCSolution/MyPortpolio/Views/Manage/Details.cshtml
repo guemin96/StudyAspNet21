@@ -7,11 +7,11 @@
 
 <div class="col-lg col-md ml-auto mr-auto">
     <div class="card card-login">
-        <div class="section section-contacts">
+        <div class="section section-contacts ">
             <div class="row">
                 <div class="col-md-11 ml-auto mr-auto">
                     <h3 class="text-center title" style="font-weight:bold; color:black; margin-top:0px">Manage</h3>
-                    <dl class="row">
+                    <dl class="row col-md">
                         <dt class="col-sm-2">
                             구분
                         </dt>
@@ -38,8 +38,8 @@
                         </dd>
                     </dl>
                 </div>
-                <div>
-                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">수정</a> |&nbsp;
+                <div class="col">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary" style="margin:10px">수정</a> |&nbsp;
                     <a asp-action="Index">리스트</a>
                 </div>
             </div>
