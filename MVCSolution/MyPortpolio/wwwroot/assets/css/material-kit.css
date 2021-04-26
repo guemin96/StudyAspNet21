@@ -12,6 +12,44 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
  */
+/*À½¾Ç*/
+    .bgm-box {
+    display:flex;
+    margin:5px;
+    vertical-align:middle;
+    justify-content: flex-end;
+    animation-duration: 2s;
+    animation-name: fade-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.bgm-btn {
+    color: #74a150;
+    text-align: right;
+    font-family: 'Gamja Flower';
+}
+
+@keyframes fade-in-out {
+    from {
+        opacity: 1.0;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+.paused {
+    -webkit-animation-play-state: paused !important;
+    -moz-animation-play-state: paused !important;
+    -o-animation-play-state: paused !important; 
+    animation-play-state: paused !important;
+}
+
+/*À½¾Ç ³¡*/
+
+
 /*     brand Colors              */
 .carousel.carousel-full-navigation .left {
   cursor: url("../../img/arrow-left.png"), url("../../img/arrow-left.cur"), default !important;
@@ -2046,7 +2084,7 @@ pre code {
 
 .table th,
 .table td {
-  padding: 0.75rem;
+  padding: 2px;
   vertical-align: top;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }

@@ -2,16 +2,14 @@
 using Microsoft.Extensions.Logging;
 using MyPortpolio.Data;
 using MyPortpolio.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-
 namespace MyPortpolio.Controllers
 {
     public class HomeController : Controller
     {
+        
+
         private readonly ApplicationDbContext _context;
 
         private readonly ILogger<HomeController> _logger;
@@ -53,6 +51,7 @@ namespace MyPortpolio.Controllers
         {
             return View();
         }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
